@@ -29,6 +29,20 @@ article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
 
+.job_header h3 {
+	display: inline-block;
+}
+
+.job_title {
+	text-align: left;
+	width: 50%;
+}
+
+.how_long {
+	text-align: right;
+	width: 50%;
+}
+
 body {
 	line-height: 1;
 }
