@@ -1586,6 +1586,7 @@ input, select, textarea {
 		background: #ffffff;
 		border-bottom: solid 1px #ccc;
 		padding: 2.75em 1.75em 2.75em 1.75em;
+		text-align: center;
 	}
 
 		.box .image.featured {
@@ -1706,6 +1707,17 @@ input, select, textarea {
 	.image {
 		display: inline-block;
 		outline: 0;
+	}
+
+	.image.contact {
+		display: inline-block;
+		width: 10%; /* This is the width of the anchor tag */
+		margin: 0 0 2em 0;
+	}
+	
+	.image.contact img {
+		width: 50px; /* Set a specific width for the image */
+		height: auto; /* Maintain aspect ratio */
 	}
 
 		.image img {
