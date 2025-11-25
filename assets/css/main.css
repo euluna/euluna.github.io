@@ -2934,3 +2934,19 @@ input, select, textarea {
 			}
 
 	}
+
+/* Custom Styles for Contact Page */
+.contact-box {
+	text-align: center;
+}
+
+.contact-icons .image.contact {
+	display: inline-block;
+	margin: 10px;
+	border-bottom: none;
+}
+
+.contact-icons .image.contact img {
+	width: 64px;
+	height: 64px;
+}
