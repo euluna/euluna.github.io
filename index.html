@@ -41,7 +41,7 @@
         
         .section-title { 
             text-align: center; 
-            margin-bottom: 30px;
+            margin-bottom: 15px;
             font-size: 1.6rem;
             color: var(--bg-dark); 
             text-transform: uppercase; 
@@ -50,7 +50,7 @@
             display: inline-block;
             padding-bottom: 5px;
         }
-        .center-title-wrapper { text-align: center; margin-bottom: 20px; }
+        .center-title-wrapper { text-align: center; margin-bottom: 5px; }
         
         /* --- HEADER & NAV --- */
         header { 
@@ -92,7 +92,7 @@
             justify-content: center;
             min-height: 450px;
             padding: 60px 0;
-            background: linear-gradient(to right, rgba(37, 33, 34, 0.9), rgba(37, 33, 34, 0.7)), url('images/pic01.jpg');
+            background: linear-gradient(to right, rgba(37, 33, 34, 0.9), rgba(37, 33, 34, 0.6)), url('images/pic01.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -121,8 +121,42 @@
         .hero-text { text-align: left; }
         .hero-text h1 { font-size: 2.8rem; margin-bottom: 5px; color: var(--white); font-weight: 800; line-height: 1.2; }
         .hero-text h3 { font-size: 1.3rem; font-weight: 400; color: var(--primary); margin-bottom: 15px; }
-        .hero-text p { max-width: 550px; margin-bottom: 25px; color: #e0e0e0; font-size: 1.05rem; line-height: 1.5; }
+        .hero-text p { max-width: 550px; margin-bottom: 10px; color: #e0e0e0; font-size: 1.05rem; line-height: 1.5; }
         
+        /* PC View: Contact Line Layout */
+        .hero-contact-line {
+            display: flex;
+            justify-content: flex-start; /* Default PC alignment: Grouped on left */
+            align-items: center;
+            margin-bottom: 25px; 
+            flex-wrap: wrap; 
+            gap: 15px; /* Spacing between the icon group and email button */
+        }
+        
+        /* Hero Social Icons Group (Left on PC) */
+        .hero-social-icons { margin: 0; display: flex; align-items: center; }
+        .hero-social-icons a { 
+            display: inline-flex; justify-content: center; align-items: center;
+            width: 35px; height: 35px; margin-right: 10px;
+            background: rgba(255,255,255,0.15); border-radius: 50%; 
+            color: var(--white); font-size: 1.1rem; transition: background 0.3s, color 0.3s; 
+        }
+        .hero-social-icons a:hover { background: var(--primary); color: var(--white); }
+
+        /* Email Copy Button (PC View Adjustments for sizing) */
+        .email-copy-trigger {
+            background: rgba(255,255,255,0.08); 
+            padding: 8px 18px; /* Tighter padding for PC view */
+            border-radius: 50px;
+            font-size: 0.95rem; /* Reduced font size for PC view */
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+            position: relative; 
+            overflow: hidden;
+            width: fit-content;
+            margin-top: 0; /* Ensures vertical alignment is maintained */
+        }
+
         .btn { 
             display: inline-block; padding: 10px 28px; 
             background: var(--primary); color: var(--white); 
@@ -172,7 +206,25 @@
 
         .project-card .tags { font-size: 0.75rem; color: var(--primary); font-weight: 700; margin-bottom: 12px; text-transform: uppercase; }
         .project-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 20px; flex-grow: 1; }
-        .project-links a { font-weight: 700; font-size: 0.85rem; color: var(--bg-dark); border-bottom: 2px solid var(--primary); }
+        
+        /* Project Links Stacked */
+        .project-links {
+            display: flex;
+            flex-direction: column; 
+            gap: 6px; 
+            align-items: flex-start; 
+        }
+        .project-links a { 
+            font-weight: 700; 
+            font-size: 0.85rem; 
+            color: var(--bg-dark); 
+            border-bottom: 2px solid var(--primary);
+            display: block; 
+            margin-right: 0; 
+        }
+        .project-links a:hover {
+            color: var(--primary);
+        }
 
         /* --- EDUCATION & HISTORY --- */
         #education, #experience { padding: 40px 0; }
@@ -182,14 +234,14 @@
         .timeline { max-width: 800px; margin: 0 auto; }
         
         .edu-item, .job-item { 
-            background: var(--white); padding: 15px 20px; 
-            border-radius: 8px; margin-bottom: 12px; 
+            background: var(--white); padding: 20px 25px; 
+            border-radius: 8px; margin-bottom: 15px; 
             border: 1px solid #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.03); 
-            display: flex; align-items: center; 
+            display: flex; align-items: flex-start;
         }
         
         .edu-logo, .job-logo {
-            width: 50px; height: 50px; margin-right: 20px; flex-shrink: 0;
+            width: 55px; height: 55px; margin-right: 25px; flex-shrink: 0;
             border-radius: 8px; overflow: hidden; border: 1px solid #f0f0f0;
             padding: 3px; background: #fff; display: flex; align-items: center; justify-content: center;
         }
@@ -200,19 +252,80 @@
         .edu-details, .job-details { flex-grow: 1; }
         .header-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         
-        .item-title { font-weight: 700; color: var(--bg-dark); font-size: 1rem; }
-        .item-subtitle { color: var(--primary); font-weight: 600; font-size: 0.9rem; display: block; margin-top: 2px; }
+        .item-title { font-weight: 700; color: var(--bg-dark); font-size: 1.05rem; }
+        .item-subtitle { color: var(--primary); font-weight: 600; font-size: 0.95rem; display: block; margin-top: 2px; }
         .item-date { font-size: 0.85rem; color: #999; font-style: italic; white-space: nowrap; margin-left: 10px;}
         .job-company { color: var(--text-light); font-size: 0.9rem; font-weight: 500; display: block; margin-top: 2px; }
 
+        /* RELEVANT COURSES STYLING */
+        .course-list { margin-top: 8px; font-size: 0.85rem; color: #666; line-height: 1.4; padding-right: 15px; }
+        .course-list strong { color: var(--bg-dark); font-weight: 600; }
+
+        /* Discrete Certifications Styling */
+        .certs-container {
+            max-width: 800px;
+            margin: 0 auto 15px auto; 
+            text-align: center;
+            padding: 0px 0;
+        }
+        .certs-list {
+            display: inline-block;
+            font-size: 0.8rem;
+            color: #888;
+            margin: 0;
+            padding: 0;
+        }
+        .certs-list li {
+            display: inline;
+            padding: 0 5px;
+            list-style: none;
+        }
+        .certs-list li:not(:last-child):after {
+            content: " | ";
+            color: #ccc;
+        }
+        .certs-list i {
+            margin-right: 5px;
+            color: #999;
+        }
+
         /* --- CONTACT FOOTER --- */
         footer { background: var(--bg-dark); color: var(--white); text-align: center; padding: 60px 0; }
-        .email-display {
-            background: rgba(255,255,255,0.08); padding: 12px 35px; border-radius: 50px;
-            display: inline-block; margin-top: 20px; font-size: 1.1rem; color: var(--white);
-            border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: background 0.2s;
+        
+        /* Email Display (Copy Functionality) */
+        .email-copy-trigger {
+            background: rgba(255,255,255,0.08); padding: 8px 18px; border-radius: 50px;
+            display: inline-block; cursor: pointer; transition: background 0.2s, color 0.2s, border-color 0.2s;
+            position: relative; 
+            overflow: hidden;
+            width: fit-content;
         }
-        .email-display:hover { background: rgba(255,255,255,0.15); border-color: var(--primary); }
+        .email-copy-trigger:hover { background: rgba(255,255,255,0.15); border-color: var(--primary); }
+        
+        .email-text-content {
+            display: inline-block;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        /* Class added by JS on click */
+        .copied-success .email-text-content {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+        .copied-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #79f291; 
+            opacity: 0;
+            transition: opacity 0.3s ease-out;
+            white-space: nowrap;
+        }
+        .copied-success .copied-message {
+            opacity: 1;
+        }
+        
         .social-icons { margin-top: 30px; }
         .social-icons a { 
             display: inline-flex; justify-content: center; align-items: center;
@@ -222,43 +335,47 @@
         }
         .social-icons a:hover { background: var(--primary); transform: translateY(-3px); }
 
-        /* --- RESPONSIVE --- */
+        /* --- RESPONSIVE FIXES --- */
         @media (max-width: 768px) {
             .hero-container { flex-direction: column; gap: 30px; text-align: center; }
             .hero-text { text-align: center; }
             .hero-text p { margin: 0 auto 25px auto; }
             
-            /* MOBILE NAV FIX: Horizontal Spread */
-            nav { 
-                flex-direction: column; 
-                padding: 15px 0; 
-            }
+            nav { flex-direction: column; padding: 15px 0; }
             .logo { margin-bottom: 5px; }
-            
-            .nav-links { 
-                margin-top: 10px; 
-                width: 100%; 
-                text-align: center; 
-                display: flex; 
-                flex-wrap: wrap; /* Allows links to sit side-by-side */
-                justify-content: center; /* Centers the group */
-                gap: 15px; /* Space between links */
-            }
-            
-            .nav-links a { 
-                margin: 0; 
-                display: inline-block; /* Keeps them separate, not stacked */
-                padding: 5px 5px; 
-                font-size: 0.85rem; /* Slightly smaller to fit better */
-            }
+            .nav-links { margin-top: 10px; width: 100%; text-align: center; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; }
+            .nav-links a { margin: 0; display: inline-block; padding: 5px 5px; font-size: 0.85rem; }
 
+            /* Mobile Contact Reordering (Email on top, Icons below) */
+            .hero-contact-line { flex-direction: column; align-items: center; gap: 15px; margin-bottom: 20px; }
+            .email-copy-trigger { order: -1; font-size: 1.1rem; padding: 12px 35px; } /* Email goes to the top (larger tap target) */
+            .hero-social-icons { order: 1; margin: 0; } /* Icons go below */
+            
             .edu-item, .job-item { flex-direction: row; align-items: flex-start; padding: 15px; }
-            .edu-logo, .job-logo { margin-right: 15px; }
+            .edu-logo, .job-logo { margin-right: 15px; width: 45px; height: 45px; }
             .header-row { flex-direction: column; align-items: flex-start; }
             .item-date { margin-left: 0; margin-top: 2px; font-size: 0.8rem; }
             
             .project-header { flex-direction: column; align-items: flex-start; }
             .project-date { margin-left: 0; margin-top: 2px; }
+        }
+        
+        /* Desktop/PC Specific adjustments for Hero contact */
+        @media (min-width: 769px) {
+             .hero-contact-line {
+                 /* PC: Groups everything tightly on the left */
+                 justify-content: flex-start; 
+                 gap: 15px; /* Gap between the icon group and the email button */
+             }
+             .email-copy-trigger {
+                 /* Adjusts padding for better vertical alignment with icons */
+                 padding: 8px 18px; 
+                 font-size: 0.95rem;
+             }
+             .hero-social-icons {
+                 margin-left: 0;
+                 margin-right: 0; /* Remove default margin to let gap handle spacing */
+             }
         }
     </style>
 </head>
@@ -284,7 +401,22 @@
             <div class="hero-text">
                 <h1>Hi, I'm Euluna</h1>
                 <h3>Software Systems Student at SFU</h3>
-                <p>Aspiring software engineer passionate about building reliable systems and intuitive web applications. I combine academic rigor with rapid development skills.</p>
+                <p>Aspiring software engineer passionate about building reliable systems and web apps. When I'm not coding or debugging, you'll usually find me scaling walls at the local climbing gym.</p>
+                
+                <div class="hero-contact-line">
+                    
+                    <div class="hero-social-icons">
+                        <a href="https://www.linkedin.com/in/euluna/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/euluna" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="mailto:eulunag@gmail.com" title="Email Me"><i class="fas fa-envelope"></i></a>
+                    </div>
+                    
+                    <div class="email-display email-copy-trigger">
+                        <span class="email-text-content">eulunag@gmail.com <i class="fas fa-copy" style="font-size: 0.8em; margin-left: 10px; opacity: 0.7;"></i></span>
+                        <span class="copied-message">Email Copied!</span>
+                    </div>
+                </div>
+                
                 <a href="#projects" class="btn">View My Work</a>
             </div>
         </div>
@@ -294,6 +426,8 @@
         <div class="container">
             <div class="skills-wrapper">
                 <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-tag"><i class="fas fa-microchip"></i> Arduino & Pi</span>
+                <span class="skill-tag"><i class="fas fa-eye"></i> OpenCV</span>
                 <span class="skill-tag"><i class="fab fa-java"></i> Java</span>
                 <span class="skill-tag"><i class="fas fa-leaf"></i> Spring Boot</span>
                 <span class="skill-tag"><i class="fab fa-js"></i> JavaScript (ES6+)</span>
@@ -348,23 +482,6 @@
 
                 <div class="project-card">
                     <div class="project-img-wrapper">
-                        <img src="images/tracker.jpg" alt="Day Tracker App">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-header">
-                            <h3>Important Day Tracker</h3>
-                            <span class="project-date">April 2025</span>
-                        </div>
-                        <div class="tags">Java • Spring Boot • OOP</div>
-                        <p>Developed a RESTful web service using <strong>Spring Boot</strong> for <strong>CMPT 213</strong>. Designed with modular architecture to demonstrate inheritance, encapsulation, and file I/O persistence.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/euluna/CMPT213-ImportantDayTracker" target="_blank">View on GitHub <i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img-wrapper">
                         <img src="images/houseplant.jpg" alt="Houseplant Assistant Screenshot">
                     </div>
                     <div class="project-content">
@@ -376,6 +493,41 @@
                         <p>Developed a plant care assistant for CMPT 276. Created detailed user personas and reports to drive design decisions.</p>
                         <div class="project-links">
                             <a href="https://euluna.github.io/HouseplantAssistant/" target="_blank">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="images/tracker.jpg" alt="Day Tracker App">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>Important Day Tracker</h3>
+                            <span class="project-date">April 2025</span>
+                        </div>
+                        <div class="tags">Java • Spring Boot • OOP</div>
+                        <p>Developed a RESTful web service using <strong>Spring Boot</strong> for CMPT 213. Designed with modular architecture to demonstrate inheritance, encapsulation, and file I/O persistence.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/euluna/CMPT213-ImportantDayTracker" target="_blank">View on GitHub <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="images/robot.jpg" alt="Arduino and Raspberry Pi Robot">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>Embedded Robotics (Arduino & Pi)</h3>
+                            <span class="project-date">April 2021</span>
+                        </div>
+                        <div class="tags">Arduino • Raspberry Pi • Python • OpenCV • Hardware</div>
+                        <p>Two-part project showcasing hardware integration: <strong>Arduino unit</strong> handled autonomous line-following and obstacle avoidance, including DIY IR sensor fabrication. <strong>Raspberry Pi unit</strong> used <strong>Python/OpenCV</strong> for visual guidance, traffic sign detection, and distance measurement. Demonstrated EEE fundamentals, low-level control, and custom hardware/software interfacing.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/euluna/arduinosmartrobotcar" target="_blank">Arduino Code & Report <i class="fab fa-github"></i></a>
+                            <a href="https://github.com/euluna/raspberrypismartrobotcar" target="_blank">Pi Code & Report <i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -400,6 +552,9 @@
                             <span class="item-date">Sep 2024 - Present</span>
                         </div>
                         <span class="item-subtitle">BSc in Computer Science</span>
+                        <div class="course-list">
+                            <strong>Relevant Coursework:</strong> Data Structures & Algorithms (CMPT 225, 307), Data Communications/Networking (CMPT 371), Database Systems (CMPT 354), Object-Oriented Design (CMPT 213), Software Engineering (CMPT 276), Computer Systems (CMPT 295, 201), Discrete Math (MACM 101)
+                        </div>
                     </div>
                 </div>
                 <div class="edu-item">
@@ -423,6 +578,15 @@
             <div class="center-title-wrapper">
                 <h2 class="section-title">Work History</h2>
             </div>
+            
+            <div class="certs-container">
+                <ul class="certs-list">
+                    <li><i class="fas fa-heart-pulse"></i> Occupational First Aid Level 1 (Oct 2023)</li>
+                    <li><i class="fas fa-utensils"></i> FOODSAFE Level 1 (Feb 2023)</li>
+                    <li><i class="fas fa-beer-mug-empty"></i> Serving It Right (Feb 2023)</li>
+                </ul>
+            </div>
+            
             <div class="timeline">
                 
                 <div class="job-item">
@@ -432,7 +596,7 @@
                     <div class="job-details">
                         <div class="header-row">
                             <span class="item-title">Barista (Shift Leader)</span>
-                            <span class="item-date">Mar 2025 - Present</span>
+                            <span class="item-date">Apr 2025 - Present</span>
                         </div>
                         <span class="job-company">Bjornbar Bakery</span>
                     </div>
@@ -476,7 +640,6 @@
                         <span class="job-company">Rogers Arena</span>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -486,8 +649,9 @@
             <h2>Let's Connect</h2>
             <p style="margin: 15px 0; color: #ccc;">I'm currently looking for internships and new opportunities.</p>
             
-            <div class="email-display" onclick="navigator.clipboard.writeText('eulunag@gmail.com'); alert('Email copied!');">
-                eulunag@gmail.com <i class="fas fa-copy" style="font-size: 0.8em; margin-left: 10px; opacity: 0.7;"></i>
+            <div class="email-display email-copy-trigger">
+                <span class="email-text-content">eulunag@gmail.com <i class="fas fa-copy" style="font-size: 0.8em; margin-left: 10px; opacity: 0.7;"></i></span>
+                <span class="copied-message">Email Copied!</span>
             </div>
 
             <div class="social-icons">
@@ -498,6 +662,31 @@
             <p style="margin-top: 50px; font-size: 0.8rem; color: #666;">© 2025 Euluna Gotami</p>
         </div>
     </footer>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Select all elements with the copy trigger class (used in Hero and Footer)
+            document.querySelectorAll('.email-copy-trigger').forEach(copyContainer => {
+                const emailAddress = 'eulunag@gmail.com';
+
+                copyContainer.addEventListener('click', function() {
+                    // 1. Copy text to clipboard using modern API
+                    navigator.clipboard.writeText(emailAddress).then(() => {
+                        // 2. Add class to trigger CSS transition (text change)
+                        copyContainer.classList.add('copied-success');
+                        
+                        // 3. Remove success class after a short delay
+                        setTimeout(() => {
+                            copyContainer.classList.remove('copied-success');
+                        }, 1500); // 1.5 seconds delay
+                    }).catch(err => {
+                        // Fallback mechanism if clipboard API fails (e.g., older browser or security restrictions)
+                        console.error('Could not copy text: ', err);
+                    });
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
