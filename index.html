@@ -1,70 +1,471 @@
-<!DOCTYPE HTML>
-<!--
-	Dopetrope by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-	
-	parsa office hours
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Euluna Gotami | Software Systems Student</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- CSS RESET & VARIABLES --- */
+        :root {
+            --primary: #d52349;
+            --primary-hover: #b01b3a;
+            --bg-dark: #252122;
+            --text-main: #333;
+            --text-light: #555;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+            --nav-height: 70px;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Source Sans Pro', sans-serif; }
+        
+        html { scroll-behavior: smooth; }
+        section { scroll-margin-top: var(--nav-height); }
+        
+        body { 
+            color: var(--text-main); 
+            line-height: 1.6; 
+            background-color: var(--white); 
+            padding-top: var(--nav-height); 
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        
+        /* --- LAYOUT UTILITIES --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; width: 100%; }
+        
+        .section-title { 
+            text-align: center; 
+            margin-bottom: 40px;
+            font-size: 1.8rem;
+            color: var(--bg-dark); 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+        .center-title-wrapper { text-align: center; margin-bottom: 30px; }
+        
+        /* --- HEADER & NAV --- */
+        header { 
+            background: var(--white); 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
+            position: fixed; 
+            top: 0; 
+            left: 0;
+            width: 100%;
+            height: var(--nav-height);
+            z-index: 1000; 
+            display: flex;
+            align-items: center;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--bg-dark); letter-spacing: -0.5px; }
+        
+        .nav-links a { 
+            margin-left: 25px; 
+            font-weight: 600; 
+            font-size: 0.9rem; 
+            transition: color 0.3s; 
+            color: var(--bg-dark); 
+            text-transform: uppercase;
+            position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -5px; left: 0; background-color: var(--primary);
+            transition: width 0.3s;
+        }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: var(--primary); }
 
-	-->
-<html>
-	<head>
-		<title>Euluna Gotami</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="icon" type="image/x-icon" href="favicon.ico">
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="left-sidebar is-preload">
-		<div id="page-wrapper">
+        /* --- HERO SECTION --- */
+        #hero { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 450px;
+            padding: 60px 0;
+            background: linear-gradient(to right, rgba(37, 33, 34, 0.9), rgba(37, 33, 34, 0.7)), url('images/pic01.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--white);
+            border-bottom: 1px solid #eee;
+        }
 
-			<!-- Header -->
-				<section id="header">
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            max-width: 1100px;
+            padding: 0 20px;
+        }
+        
+        .profile-img { 
+            width: 200px; height: 200px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 4px solid var(--white); 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4); 
+            flex-shrink: 0;
+        }
+        
+        .hero-text { text-align: left; }
+        .hero-text h1 { font-size: 2.8rem; margin-bottom: 5px; color: var(--white); font-weight: 800; line-height: 1.2; }
+        .hero-text h3 { font-size: 1.3rem; font-weight: 400; color: var(--primary); margin-bottom: 15px; }
+        .hero-text p { max-width: 550px; margin-bottom: 25px; color: #e0e0e0; font-size: 1.05rem; line-height: 1.5; }
+        
+        .btn { 
+            display: inline-block; padding: 10px 28px; 
+            background: var(--primary); color: var(--white); 
+            border-radius: 50px; font-weight: 700; font-size: 0.95rem;
+            transition: transform 0.2s, background 0.3s; 
+            border: 2px solid var(--primary);
+        }
+        .btn:hover { background: transparent; transform: translateY(-3px); }
 
-					<!-- Logo -->
-						<h1><a href="index.html">Euluna Gotami</a></h1>
+        /* --- SKILLS STRIP --- */
+        #skills { padding: 30px 0; background: var(--white); border-bottom: 1px solid #eee; }
+        .skills-wrapper { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+        .skill-tag { 
+            background: var(--bg-light); padding: 8px 16px; 
+            border-radius: 6px; font-weight: 600; font-size: 0.9rem;
+            color: var(--text-light); border: 1px solid #e0e0e0; 
+            transition: all 0.2s; cursor: default;
+        }
+        .skill-tag:hover { border-color: var(--primary); color: var(--primary); background: var(--white); }
 
-					<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li><a href="index.html">Home</a></li>
-							<li><a href="resume.html">Resume</a></li>
-							<li><a href="contact.html">Contact Me</a></li>
-						</ul>
-					</nav>
+        /* --- PROJECTS SECTION --- */
+        #projects { padding: 60px 0; background: var(--bg-light); }
+        .project-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 30px; 
+        }
+        .project-card { 
+            background: var(--white); border-radius: 10px; 
+            overflow: hidden; transition: all 0.3s ease; 
+            display: flex; flex-direction: column; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid transparent;
+        }
+        .project-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); border-color: rgba(213, 35, 73, 0.3); }
+        
+        .project-img-wrapper { width: 100%; height: 180px; background-color: #ddd; position: relative; overflow: hidden; }
+        .project-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .project-card:hover .project-img-wrapper img { transform: scale(1.05); }
 
-				</section>
+        .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .project-card h3 { margin-bottom: 8px; font-size: 1.3rem; color: var(--bg-dark); }
+        .project-card .tags { font-size: 0.75rem; color: var(--primary); font-weight: 700; margin-bottom: 12px; text-transform: uppercase; }
+        .project-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 20px; flex-grow: 1; }
+        .project-links a { font-weight: 700; font-size: 0.85rem; color: var(--bg-dark); border-bottom: 2px solid var(--primary); }
 
-			<!-- Main -->
-				<section id="main">
-					<div class="container">
-						<div class="row">
-							<div class="col-4 col-12-medium">
+        /* --- EDUCATION SECTION (Updated Layout) --- */
+        #education { padding: 60px 0; background: var(--white); }
+        /* Changed to list layout to match Experience section */
+        .timeline { max-width: 800px; margin: 0 auto; }
+        
+        .edu-item, .job-item { 
+            background: var(--white); padding: 25px 30px; 
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.03); 
+            display: flex; 
+            align-items: center; /* Vertically center content with logo */
+        }
+        
+        .edu-logo, .job-logo {
+            width: 70px;
+            height: 70px;
+            margin-right: 25px;
+            flex-shrink: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #f0f0f0;
+            padding: 5px;
+            background: #fff;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .edu-logo img, .job-logo img { width: 100%; height: 100%; object-fit: contain; }
+        
+        /* Make circular logos for jobs specifically if desired, or keep square */
+        .job-logo { border-radius: 50%; width: 65px; height: 65px; object-fit: cover; padding: 0; }
+        .job-logo img { object-fit: cover; }
 
-								<!-- Sidebar -->
-									<section class="box">
-										<a href="#" class="image featured"><img src="images/Euluna.jpg" alt="Image of Euluna" /></a>
-										<header>
-											<h3>Euluna Gotami</h3>
-											<h4>Software Systems Student at SFU</h4>
-										</header>
-										<p>I am an aspiring software engineer actively pursuing a Bachelors in CS at SFU. With a passion for technology and a commitment to mastering software development, I am eager to learn from experienced professionals in the field. I am seeking opportunities to apply my knowledge and grow within a dynamic and innovative team. Let's connect and explore how we can collaborate!</p>
-										<footer>
-											<a href="resume.html" class="button alt">Resume</a>
-										</footer>
-									</section>
-							</div>
-						</div>
-					</div>
-				</section>
+        .edu-details, .job-details { flex-grow: 1; }
+        
+        /* Headers */
+        .header-row { display: flex; justify-content: space-between; align-items: baseline; width: 100%; }
+        
+        .item-title { font-weight: 800; color: var(--bg-dark); font-size: 1.15rem; }
+        .item-subtitle { color: var(--primary); font-weight: 600; margin: 2px 0; font-size: 1rem; display: block; }
+        .item-date { font-size: 0.9rem; color: #888; font-style: italic; white-space: nowrap; margin-left: 10px;}
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.dropotron.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+        /* --- EXPERIENCE SECTION --- */
+        #experience { padding: 60px 0; background: var(--bg-light); }
+        .job-company { color: var(--text-light); font-size: 1rem; font-weight: 500; display: block; margin-top: 4px; }
 
-	</body>
+        /* --- CONTACT FOOTER --- */
+        footer { background: var(--bg-dark); color: var(--white); text-align: center; padding: 60px 0; }
+        .email-display {
+            background: rgba(255,255,255,0.08); padding: 12px 35px; border-radius: 50px;
+            display: inline-block; margin-top: 20px; font-size: 1.1rem; color: var(--white);
+            border: 1px solid rgba(255,255,255,0.1); cursor: pointer; transition: background 0.2s;
+        }
+        .email-display:hover { background: rgba(255,255,255,0.15); border-color: var(--primary); }
+        .social-icons { margin-top: 30px; }
+        .social-icons a { 
+            display: inline-flex; justify-content: center; align-items: center;
+            width: 45px; height: 45px; margin: 0 8px;
+            background: rgba(255,255,255,0.05); border-radius: 50%; 
+            color: var(--white); font-size: 1.1rem; transition: all 0.3s; 
+        }
+        .social-icons a:hover { background: var(--primary); transform: translateY(-3px); }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .hero-container { flex-direction: column; gap: 30px; text-align: center; }
+            .hero-text { text-align: center; }
+            .hero-text p { margin: 0 auto 25px auto; }
+            
+            nav { flex-direction: column; padding: 10px 0; }
+            .nav-links { margin-top: 10px; width: 100%; text-align: center; }
+            .nav-links a { margin: 0 10px; display: inline-block; margin-bottom: 5px; }
+
+            /* MOBILE FIX FOR LISTS: Keep Logo Inline */
+            .edu-item, .job-item {
+                flex-direction: row; /* Keep logo on left */
+                align-items: flex-start; /* Align logo to top */
+                padding: 20px;
+            }
+            
+            .edu-logo, .job-logo {
+                width: 50px; height: 50px; /* Smaller logo */
+                margin-right: 15px; /* Tighter margin */
+                margin-bottom: 0; /* No bottom margin */
+            }
+
+            /* Stack text content vertically inside the right side */
+            .header-row { flex-direction: column; align-items: flex-start; }
+            .item-date { margin-left: 0; margin-top: 4px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">Euluna Gotami</a>
+                <div class="nav-links">
+                    <a href="#projects">Projects</a>
+                    <a href="#education">Education</a>
+                    <a href="#experience">History</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="hero-container">
+            <img src="images/Euluna.jpg" alt="Euluna Gotami" class="profile-img">
+            <div class="hero-text">
+                <h1>Hi, I'm Euluna</h1>
+                <h3>Software Systems Student at SFU</h3>
+                <p>Aspiring software engineer passionate about building reliable systems and intuitive web applications. I combine academic rigor with rapid development skills.</p>
+                <a href="#projects" class="btn">View My Work</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="skills-wrapper">
+                <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-tag"><i class="fab fa-js"></i> JavaScript (ES6+)</span>
+                <span class="skill-tag"><i class="fab fa-html5"></i> HTML5 & CSS3</span>
+                <span class="skill-tag"><i class="fab fa-git-alt"></i> Git & GitHub</span>
+                <span class="skill-tag"><i class="fas fa-plug"></i> APIs (Gemini)</span>
+                <span class="skill-tag"><i class="fas fa-network-wired"></i> Networking (TCP/UDP)</span>
+                <span class="skill-tag"><i class="fas fa-tasks"></i> Agile & Waterfall</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="center-title-wrapper">
+                <h2 class="section-title">Technical Projects</h2>
+            </div>
+            <div class="project-grid">
+                
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="images/observan.jpg" alt="ObserVan Screenshot">
+                    </div>
+                    <div class="project-content">
+                        <h3>ObserVan</h3>
+                        <div class="tags">JavaScript • Google Gemini AI • 24h Hackathon</div>
+                        <p>A crime heatmap visualization for Vancouver built in a <strong>24-hour sprint</strong>. Integrated Google Gemini AI to analyze crime trends.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Hestone/ObserVan" target="_blank">View on GitHub <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="images/transport.jpg" alt="Transport Protocol Diagram">
+                    </div>
+                    <div class="project-content">
+                        <h3>Reliable Transport Protocol</h3>
+                        <div class="tags">Python • Networking • Systems</div>
+                        <p>Designed and implemented a custom TCP-like transport protocol over UDP. Built features including flow control and congestion control.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/alfred-goh02/cmpt371-mini-project-2" target="_blank">View on GitHub <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="images/houseplant.jpg" alt="Houseplant Assistant Screenshot">
+                    </div>
+                    <div class="project-content">
+                        <h3>Houseplant Assistant</h3>
+                        <div class="tags">Software Engineering • Waterfall • APIs</div>
+                        <p>Developed a plant care assistant for CMPT 276. Created detailed user personas and reports to drive design decisions.</p>
+                        <div class="project-links">
+                            <a href="https://euluna.github.io/HouseplantAssistant/" target="_blank">Live Demo <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <div class="center-title-wrapper">
+                <h2 class="section-title">Education</h2>
+            </div>
+            <div class="timeline">
+                <div class="edu-item">
+                    <div class="edu-logo">
+                        <img src="images/SFU.png" alt="SFU Logo">
+                    </div>
+                    <div class="edu-details">
+                        <div class="header-row">
+                            <span class="item-title">Simon Fraser University</span>
+                            <span class="item-date">Sep 2024 - Present</span>
+                        </div>
+                        <span class="item-subtitle">BSc in Computer Science</span>
+                    </div>
+                </div>
+                <div class="edu-item">
+                    <div class="edu-logo">
+                        <img src="images/Langara.png" alt="Langara Logo">
+                    </div>
+                    <div class="edu-details">
+                        <div class="header-row">
+                            <span class="item-title">Langara College</span>
+                            <span class="item-date">Jan 2023 - Aug 2024</span>
+                        </div>
+                        <span class="item-subtitle">Associate of Science in CS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <div class="center-title-wrapper">
+                <h2 class="section-title">Work History</h2>
+            </div>
+            <div class="timeline">
+                
+                <div class="job-item">
+                    <div class="job-logo">
+                        <img src="images/Bjornbar.jpg" alt="Bjornbar Logo">
+                    </div>
+                    <div class="job-details">
+                        <div class="header-row">
+                            <span class="item-title">Barista (Shift Leader)</span>
+                            <span class="item-date">Apr 2025 - Present</span>
+                        </div>
+                        <span class="job-company">Bjornbar Bakery</span>
+                    </div>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-logo">
+                        <img src="images/Artigiano.jpeg" alt="Artigiano Logo">
+                    </div>
+                    <div class="job-details">
+                        <div class="header-row">
+                            <span class="item-title">Barista (Shift Leader)</span>
+                            <span class="item-date">May 2024 - Mar 2025</span>
+                        </div>
+                        <span class="job-company">Caffe Artigiano</span>
+                    </div>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-logo">
+                        <img src="images/McDonalds.jpeg" alt="McDonalds Logo">
+                    </div>
+                    <div class="job-details">
+                        <div class="header-row">
+                            <span class="item-title">Guest Experience Leader</span>
+                            <span class="item-date">Jun 2023 - Sep 2024</span>
+                        </div>
+                        <span class="job-company">McDonald's</span>
+                    </div>
+                </div>
+
+                <div class="job-item">
+                    <div class="job-logo">
+                        <img src="images/RogersArena.jpg" alt="Rogers Arena Logo">
+                    </div>
+                    <div class="job-details">
+                        <div class="header-row">
+                            <span class="item-title">Quick Service Attendant</span>
+                            <span class="item-date">Feb 2023 - May 2024</span>
+                        </div>
+                        <span class="job-company">Rogers Arena</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="container">
+            <h2>Let's Connect</h2>
+            <p style="margin: 15px 0; color: #ccc;">I'm currently looking for internships and new opportunities.</p>
+            
+            <div class="email-display" onclick="navigator.clipboard.writeText('eulunag@gmail.com'); alert('Email copied!');">
+                eulunag@gmail.com <i class="fas fa-copy" style="font-size: 0.8em; margin-left: 10px; opacity: 0.7;"></i>
+            </div>
+
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/euluna/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/euluna" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="mailto:eulunag@gmail.com" title="Email Me"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p style="margin-top: 50px; font-size: 0.8rem; color: #666;">© 2025 Euluna Gotami</p>
+        </div>
+    </footer>
+
+</body>
 </html>
