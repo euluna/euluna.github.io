@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Euluna Gotami | Software Systems Student</title>
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
     <style>
         /* --- CSS RESET & VARIABLES --- */
         :root {
@@ -20,13 +24,14 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Source Sans Pro', sans-serif; }
         
         html { scroll-behavior: smooth; }
+        
+        /* Helper to ensure links don't land behind the sticky header */
         section { scroll-margin-top: var(--nav-height); }
         
         body { 
             color: var(--text-main); 
             line-height: 1.6; 
             background-color: var(--white); 
-            padding-top: var(--nav-height); 
         }
         a { text-decoration: none; color: inherit; }
         ul { list-style: none; }
@@ -36,8 +41,8 @@
         
         .section-title { 
             text-align: center; 
-            margin-bottom: 30px; /* Reduced margin */
-            font-size: 1.6rem; /* Slightly smaller */
+            margin-bottom: 30px;
+            font-size: 1.6rem;
             color: var(--bg-dark); 
             text-transform: uppercase; 
             letter-spacing: 1px; 
@@ -51,12 +56,11 @@
         header { 
             background: var(--white); 
             box-shadow: 0 2px 10px rgba(0,0,0,0.1); 
-            position: fixed; 
+            position: sticky; 
             top: 0; 
-            left: 0;
-            width: 100%;
-            height: var(--nav-height);
             z-index: 1000; 
+            width: 100%;
+            min-height: var(--nav-height); 
             display: flex;
             align-items: center;
         }
@@ -160,56 +164,45 @@
         .project-card:hover .project-img-wrapper img { transform: scale(1.05); }
 
         .project-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .project-card h3 { margin-bottom: 8px; font-size: 1.3rem; color: var(--bg-dark); }
+        
+        /* Header Row for Title + Date */
+        .project-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px; }
+        .project-header h3 { font-size: 1.3rem; color: var(--bg-dark); margin: 0; }
+        .project-date { font-size: 0.85rem; color: #999; font-style: italic; flex-shrink: 0; margin-left: 10px; }
+
         .project-card .tags { font-size: 0.75rem; color: var(--primary); font-weight: 700; margin-bottom: 12px; text-transform: uppercase; }
         .project-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 20px; flex-grow: 1; }
         .project-links a { font-weight: 700; font-size: 0.85rem; color: var(--bg-dark); border-bottom: 2px solid var(--primary); }
 
-        /* --- EDUCATION & HISTORY (COMPACT MODE) --- */
-        #education, #experience { padding: 40px 0; } /* Reduced padding */
-        
+        /* --- EDUCATION & HISTORY --- */
+        #education, #experience { padding: 40px 0; }
         #education { background: var(--white); }
         #experience { background: var(--bg-light); }
 
         .timeline { max-width: 800px; margin: 0 auto; }
         
         .edu-item, .job-item { 
-            background: var(--white); 
-            padding: 15px 20px; /* Much tighter padding */
-            border-radius: 8px;
-            margin-bottom: 12px; /* Less space between items */
-            border: 1px solid #eee;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03); 
-            display: flex; 
-            align-items: center; 
+            background: var(--white); padding: 15px 20px; 
+            border-radius: 8px; margin-bottom: 12px; 
+            border: 1px solid #eee; box-shadow: 0 2px 5px rgba(0,0,0,0.03); 
+            display: flex; align-items: center; 
         }
         
         .edu-logo, .job-logo {
-            width: 50px; height: 50px; /* Smaller logos */
-            margin-right: 20px;
-            flex-shrink: 0;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid #f0f0f0;
-            padding: 3px;
-            background: #fff;
-            display: flex; align-items: center; justify-content: center;
+            width: 50px; height: 50px; margin-right: 20px; flex-shrink: 0;
+            border-radius: 8px; overflow: hidden; border: 1px solid #f0f0f0;
+            padding: 3px; background: #fff; display: flex; align-items: center; justify-content: center;
         }
         .edu-logo img, .job-logo img { width: 100%; height: 100%; object-fit: contain; }
-        
-        /* Circular logo for jobs */
         .job-logo { border-radius: 50%; padding: 0; }
         .job-logo img { object-fit: cover; }
 
         .edu-details, .job-details { flex-grow: 1; }
-        
-        /* Headers */
         .header-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         
         .item-title { font-weight: 700; color: var(--bg-dark); font-size: 1rem; }
         .item-subtitle { color: var(--primary); font-weight: 600; font-size: 0.9rem; display: block; margin-top: 2px; }
         .item-date { font-size: 0.85rem; color: #999; font-style: italic; white-space: nowrap; margin-left: 10px;}
-        
         .job-company { color: var(--text-light); font-size: 0.9rem; font-weight: 500; display: block; margin-top: 2px; }
 
         /* --- CONTACT FOOTER --- */
@@ -235,21 +228,37 @@
             .hero-text { text-align: center; }
             .hero-text p { margin: 0 auto 25px auto; }
             
-            nav { flex-direction: column; padding: 10px 0; }
-            .nav-links { margin-top: 10px; width: 100%; text-align: center; }
-            .nav-links a { margin: 0 10px; display: inline-block; margin-bottom: 5px; }
-
-            /* MOBILE FIX: Keep Logo Inline */
-            .edu-item, .job-item {
-                flex-direction: row; 
-                align-items: flex-start;
-                padding: 15px;
+            /* MOBILE NAV FIX: Horizontal Spread */
+            nav { 
+                flex-direction: column; 
+                padding: 15px 0; 
             }
-            .edu-logo, .job-logo { margin-right: 15px; }
+            .logo { margin-bottom: 5px; }
+            
+            .nav-links { 
+                margin-top: 10px; 
+                width: 100%; 
+                text-align: center; 
+                display: flex; 
+                flex-wrap: wrap; /* Allows links to sit side-by-side */
+                justify-content: center; /* Centers the group */
+                gap: 15px; /* Space between links */
+            }
+            
+            .nav-links a { 
+                margin: 0; 
+                display: inline-block; /* Keeps them separate, not stacked */
+                padding: 5px 5px; 
+                font-size: 0.85rem; /* Slightly smaller to fit better */
+            }
 
-            /* Stack text content vertically inside the right side */
+            .edu-item, .job-item { flex-direction: row; align-items: flex-start; padding: 15px; }
+            .edu-logo, .job-logo { margin-right: 15px; }
             .header-row { flex-direction: column; align-items: flex-start; }
             .item-date { margin-left: 0; margin-top: 2px; font-size: 0.8rem; }
+            
+            .project-header { flex-direction: column; align-items: flex-start; }
+            .project-date { margin-left: 0; margin-top: 2px; }
         }
     </style>
 </head>
@@ -285,10 +294,11 @@
         <div class="container">
             <div class="skills-wrapper">
                 <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+                <span class="skill-tag"><i class="fab fa-java"></i> Java</span>
+                <span class="skill-tag"><i class="fas fa-leaf"></i> Spring Boot</span>
                 <span class="skill-tag"><i class="fab fa-js"></i> JavaScript (ES6+)</span>
                 <span class="skill-tag"><i class="fab fa-html5"></i> HTML5 & CSS3</span>
                 <span class="skill-tag"><i class="fab fa-git-alt"></i> Git & GitHub</span>
-                <span class="skill-tag"><i class="fas fa-plug"></i> APIs (Gemini)</span>
                 <span class="skill-tag"><i class="fas fa-network-wired"></i> Networking (TCP/UDP)</span>
                 <span class="skill-tag"><i class="fas fa-tasks"></i> Agile & Waterfall</span>
             </div>
@@ -304,24 +314,13 @@
                 
                 <div class="project-card">
                     <div class="project-img-wrapper">
-                        <img src="images/observan.jpg" alt="ObserVan Screenshot">
-                    </div>
-                    <div class="project-content">
-                        <h3>ObserVan</h3>
-                        <div class="tags">JavaScript • Google Gemini AI • 24h Hackathon</div>
-                        <p>A crime heatmap visualization for Vancouver built in a <strong>24-hour sprint</strong>. Integrated Google Gemini AI to analyze crime trends.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/Hestone/ObserVan" target="_blank">View on GitHub <i class="fab fa-github"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <div class="project-img-wrapper">
                         <img src="images/transport.jpg" alt="Transport Protocol Diagram">
                     </div>
                     <div class="project-content">
-                        <h3>Reliable Transport Protocol</h3>
+                        <div class="project-header">
+                            <h3>Reliable Transport Protocol</h3>
+                            <span class="project-date">Nov 2025</span>
+                        </div>
                         <div class="tags">Python • Networking • Systems</div>
                         <p>Designed and implemented a custom TCP-like transport protocol over UDP. Built features including flow control and congestion control.</p>
                         <div class="project-links">
@@ -332,11 +331,48 @@
 
                 <div class="project-card">
                     <div class="project-img-wrapper">
+                        <img src="images/observan.jpg" alt="ObserVan Screenshot">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>ObserVan</h3>
+                            <span class="project-date">Oct 2025</span>
+                        </div>
+                        <div class="tags">JavaScript • Gemini AI • Hackathon</div>
+                        <p>A crime heatmap visualization for Vancouver built in a <strong>24-hour sprint</strong>. Integrated Google Gemini AI to analyze crime trends.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/Hestone/ObserVan" target="_blank">View on GitHub <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
+                        <img src="images/tracker.jpg" alt="Day Tracker App">
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3>Important Day Tracker</h3>
+                            <span class="project-date">April 2025</span>
+                        </div>
+                        <div class="tags">Java • Spring Boot • OOP</div>
+                        <p>Developed a RESTful web service using <strong>Spring Boot</strong> for <strong>CMPT 213</strong>. Designed with modular architecture to demonstrate inheritance, encapsulation, and file I/O persistence.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/euluna/CMPT213-ImportantDayTracker" target="_blank">View on GitHub <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-img-wrapper">
                         <img src="images/houseplant.jpg" alt="Houseplant Assistant Screenshot">
                     </div>
                     <div class="project-content">
-                        <h3>Houseplant Assistant</h3>
-                        <div class="tags">Software Engineering • Waterfall • APIs</div>
+                        <div class="project-header">
+                            <h3>Houseplant Assistant</h3>
+                            <span class="project-date">Dec 2024</span>
+                        </div>
+                        <div class="tags">Software Engineering • Waterfall</div>
                         <p>Developed a plant care assistant for CMPT 276. Created detailed user personas and reports to drive design decisions.</p>
                         <div class="project-links">
                             <a href="https://euluna.github.io/HouseplantAssistant/" target="_blank">Live Demo <i class="fas fa-external-link-alt"></i></a>
@@ -424,7 +460,7 @@
                             <span class="item-title">Guest Experience Leader</span>
                             <span class="item-date">Jun 2023 - Sep 2024</span>
                         </div>
-                        <span class="job-company">McDonald's</span>
+                        <span class="job-company">McDonalds</span>
                     </div>
                 </div>
 
