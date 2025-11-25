@@ -36,16 +36,16 @@
         
         .section-title { 
             text-align: center; 
-            margin-bottom: 40px;
-            font-size: 1.8rem;
+            margin-bottom: 30px; /* Reduced margin */
+            font-size: 1.6rem; /* Slightly smaller */
             color: var(--bg-dark); 
             text-transform: uppercase; 
             letter-spacing: 1px; 
             border-bottom: 3px solid var(--primary);
             display: inline-block;
-            padding-bottom: 8px;
+            padding-bottom: 5px;
         }
-        .center-title-wrapper { text-align: center; margin-bottom: 30px; }
+        .center-title-wrapper { text-align: center; margin-bottom: 20px; }
         
         /* --- HEADER & NAV --- */
         header { 
@@ -165,51 +165,52 @@
         .project-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 20px; flex-grow: 1; }
         .project-links a { font-weight: 700; font-size: 0.85rem; color: var(--bg-dark); border-bottom: 2px solid var(--primary); }
 
-        /* --- EDUCATION SECTION (Updated Layout) --- */
-        #education { padding: 60px 0; background: var(--white); }
-        /* Changed to list layout to match Experience section */
+        /* --- EDUCATION & HISTORY (COMPACT MODE) --- */
+        #education, #experience { padding: 40px 0; } /* Reduced padding */
+        
+        #education { background: var(--white); }
+        #experience { background: var(--bg-light); }
+
         .timeline { max-width: 800px; margin: 0 auto; }
         
         .edu-item, .job-item { 
-            background: var(--white); padding: 25px 30px; 
-            border-radius: 12px;
-            margin-bottom: 20px;
+            background: var(--white); 
+            padding: 15px 20px; /* Much tighter padding */
+            border-radius: 8px;
+            margin-bottom: 12px; /* Less space between items */
             border: 1px solid #eee;
-            box-shadow: 0 3px 8px rgba(0,0,0,0.03); 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03); 
             display: flex; 
-            align-items: center; /* Vertically center content with logo */
+            align-items: center; 
         }
         
         .edu-logo, .job-logo {
-            width: 70px;
-            height: 70px;
-            margin-right: 25px;
+            width: 50px; height: 50px; /* Smaller logos */
+            margin-right: 20px;
             flex-shrink: 0;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             border: 1px solid #f0f0f0;
-            padding: 5px;
+            padding: 3px;
             background: #fff;
             display: flex; align-items: center; justify-content: center;
         }
         .edu-logo img, .job-logo img { width: 100%; height: 100%; object-fit: contain; }
         
-        /* Make circular logos for jobs specifically if desired, or keep square */
-        .job-logo { border-radius: 50%; width: 65px; height: 65px; object-fit: cover; padding: 0; }
+        /* Circular logo for jobs */
+        .job-logo { border-radius: 50%; padding: 0; }
         .job-logo img { object-fit: cover; }
 
         .edu-details, .job-details { flex-grow: 1; }
         
         /* Headers */
-        .header-row { display: flex; justify-content: space-between; align-items: baseline; width: 100%; }
+        .header-row { display: flex; justify-content: space-between; align-items: center; width: 100%; }
         
-        .item-title { font-weight: 800; color: var(--bg-dark); font-size: 1.15rem; }
-        .item-subtitle { color: var(--primary); font-weight: 600; margin: 2px 0; font-size: 1rem; display: block; }
-        .item-date { font-size: 0.9rem; color: #888; font-style: italic; white-space: nowrap; margin-left: 10px;}
-
-        /* --- EXPERIENCE SECTION --- */
-        #experience { padding: 60px 0; background: var(--bg-light); }
-        .job-company { color: var(--text-light); font-size: 1rem; font-weight: 500; display: block; margin-top: 4px; }
+        .item-title { font-weight: 700; color: var(--bg-dark); font-size: 1rem; }
+        .item-subtitle { color: var(--primary); font-weight: 600; font-size: 0.9rem; display: block; margin-top: 2px; }
+        .item-date { font-size: 0.85rem; color: #999; font-style: italic; white-space: nowrap; margin-left: 10px;}
+        
+        .job-company { color: var(--text-light); font-size: 0.9rem; font-weight: 500; display: block; margin-top: 2px; }
 
         /* --- CONTACT FOOTER --- */
         footer { background: var(--bg-dark); color: var(--white); text-align: center; padding: 60px 0; }
@@ -238,22 +239,17 @@
             .nav-links { margin-top: 10px; width: 100%; text-align: center; }
             .nav-links a { margin: 0 10px; display: inline-block; margin-bottom: 5px; }
 
-            /* MOBILE FIX FOR LISTS: Keep Logo Inline */
+            /* MOBILE FIX: Keep Logo Inline */
             .edu-item, .job-item {
-                flex-direction: row; /* Keep logo on left */
-                align-items: flex-start; /* Align logo to top */
-                padding: 20px;
+                flex-direction: row; 
+                align-items: flex-start;
+                padding: 15px;
             }
-            
-            .edu-logo, .job-logo {
-                width: 50px; height: 50px; /* Smaller logo */
-                margin-right: 15px; /* Tighter margin */
-                margin-bottom: 0; /* No bottom margin */
-            }
+            .edu-logo, .job-logo { margin-right: 15px; }
 
             /* Stack text content vertically inside the right side */
             .header-row { flex-direction: column; align-items: flex-start; }
-            .item-date { margin-left: 0; margin-top: 4px; font-size: 0.85rem; }
+            .item-date { margin-left: 0; margin-top: 2px; font-size: 0.8rem; }
         }
     </style>
 </head>
