@@ -455,8 +455,9 @@
                             <h3>Reliable Transport Protocol</h3>
                             <span class="project-date">Nov 2025</span>
                         </div>
-                        <div class="tags">Python • Networking • Systems</div>
-                        <p>Designed and implemented a custom TCP-like transport protocol over UDP. Built features including flow control and congestion control.</p>
+                        <div class="tags">Python • Networking • Wireshark</div>
+                            <p>Developed a TCP-like connection-oriented transport protocol from scratch using Python and UDP to establish reliable data transfer over inherently unreliable channels. The implementation uses a custom Go-Back-N (GBN) sliding window mechanism, utilizing MD5-based checksums for data integrity and a structured three-way handshake for robust connection management. The project involved building a dedicated channel layer to simulate real-world network conditions, including random packet loss and bit corruption.</p>
+                            <p>Focused on high-performance congestion control by implementing a dynamic Congestion Window (CWND) that transitions between Slow Start and Congestion Avoidance phases. The system manages network stress by halving the slow-start threshold and resetting the CWND upon detecting loss via a retransmission timer. Validation through Wireshark traffic analysis confirmed that the protocol correctly adheres to the receiver’s advertised window and maintains fairness between simultaneous flows, remaining functional even under 20% aggregate packet loss.</p>
                         <div class="project-links">
                             <a href="https://github.com/alfred-goh02/cmpt371-mini-project-2" target="_blank">View on GitHub <i class="fab fa-github"></i></a>
                         </div>
