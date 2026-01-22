@@ -181,7 +181,7 @@
         #projects { padding: 60px 0; background: var(--bg-light); }
         .project-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
             gap: 30px; 
         }
         .project-card { 
@@ -205,14 +205,15 @@
         .project-date { font-size: 0.85rem; color: #999; font-style: italic; flex-shrink: 0; margin-left: 10px; }
 
         .project-card .tags { font-size: 0.75rem; color: var(--primary); font-weight: 700; margin-bottom: 12px; text-transform: uppercase; }
-        .project-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 20px; flex-grow: 1; }
+        .project-card p { font-size: 0.9rem; color: var(--text-light); margin-bottom: 10px; }
         
         /* Project Links Stacked */
         .project-links {
             display: flex;
             flex-direction: column; 
             gap: 6px; 
-            align-items: flex-start; 
+            align-items: flex-start;
+            margin-top: auto;
         }
         .project-links a { 
             font-weight: 700; 
